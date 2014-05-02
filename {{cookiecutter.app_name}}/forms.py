@@ -4,7 +4,7 @@ from {{ cookiecutter.app_name }}.models import {{ cookiecutter.model_name }}
 
 
 class {{ cookiecutter.model_name }}Form(forms.ModelForm):
-	def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
           self.helper = FormHelper(self)
           self.helper.form_method = 'post'
           self.helper.form_action = '.'
