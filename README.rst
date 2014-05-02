@@ -4,7 +4,7 @@ Cookiecutter Django CRUD
 A cookiecutter template to create a Django app within an existing Django project, with boilerplate including:
     * A barebones Django model.
     * Django CRUD views and templates using django-vanilla-views.
-    * A Django ModelForm using floppyforms.
+    * A Django ModelForm using crispyforms.
     * Tests for all of the views using WebTest.
     * Model Mommy generated models for the tests.
 
@@ -17,14 +17,14 @@ Quickstart
 
 .. code-block:: console
 
-    pip install -r https://raw.github.com/wildfish/cookiecutter-django-crud/master/requirements.txt
+    pip install -r https://raw.githubusercontent.com/flxfxp/cookiecutter-django-crud/master/requirements.txt
 
 
 2. Run cookiecutter using this template.  Note that **it will overwrite existing files without warning if you already have an app dir of the same name**, so make sure your code is checked in or backed up.
 
 .. code-block:: console
 
-    cookiecutter git@github.com:wildfish/cookiecutter-django-crud.git
+    cookiecutter https://github.com/flxfxp/cookiecutter-django-crud.git
 
 
 3. You'll need to add floppyforms to your INSTALLED_APPS, along with your new app of course:
@@ -33,7 +33,7 @@ Quickstart
 
     INSTALLED_APPS = (
         ..
-        'floppyforms',
+        'crispy_forms',
         'yourproject.yourapp',
     )
 

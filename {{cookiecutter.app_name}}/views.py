@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from vanilla import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .forms import {{ cookiecutter.model_name }}Form
-from .models import {{ cookiecutter.model_name }}
+from {{ cookiecutter.app_name }}.forms import {{ cookiecutter.model_name }}Form
+from {{ cookiecutter.app_name }}.models import {{ cookiecutter.model_name }}
 
 
 class {{ cookiecutter.model_name }}CRUDView(object):

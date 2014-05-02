@@ -2,19 +2,31 @@
 
 {% block content %}
     <h1>Listing</h1>
-    <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_create' %}">Create</a>
-    <ul>
+    <a class="btn btn-primary" href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_create' %}">Create</a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for object in object_list %}
-            <li>
-                {{ object }}
-                <a href="{{ object.get_absolute_url }}">Details</a>
-                <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_update' object.pk %}">Update</a>
-                <a href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_delete' object.pk %}">Delete</a>
-            </li>
+            <tr>
+                <td>{{ object.id }}</td>
+                <td>{{ object.name }}</td>
+                <td>
+                    <a class="btn btn-info btn-xs" href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_detail' object.pk %}">Details</a> 
+                    <a class="btn btn-warning btn-xs" href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_update' object.pk %}">Update</a> 
+                    <a class="btn btn-danger btn-xs" href="{% url '{% endraw %}{{ cookiecutter.model_name|lower }}{% raw %}_delete' object.pk %}">Delete</a>
+                </td>
+            </tr>
         {% empty %}
-                <p>No items.</p>
+                <td colspan="3">No items.</td>
         {% endfor %}
-    </ul>
+      </tbody>
+    </table>
 
     {% if is_paginated %}
         <div class="pagination">
