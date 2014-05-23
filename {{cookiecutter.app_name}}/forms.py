@@ -1,9 +1,11 @@
+from django.forms import ModelForm
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from {{ cookiecutter.app_name }}.models import {{ cookiecutter.model_name }}
 
 
-class {{ cookiecutter.model_name }}Form(forms.ModelForm):
+class {{ cookiecutter.model_name }}Form(ModelForm):
     def __init__(self, *args, **kwargs):
           super({{ cookiecutter.model_name }}Form, self).__init__(*args, **kwargs)
           self.helper = FormHelper(self)

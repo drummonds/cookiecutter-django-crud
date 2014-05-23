@@ -31,7 +31,10 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         # check that we don't already have a model with this name
         self.assertFalse({{ cookiecutter.model_name }}.objects.filter(name=new_name).exists())
 
-        form = response.forms['{{ cookiecutter.model_name|lower }}_form']
+        # This was the code but it isn't the form name
+        # form = response.forms['{{ cookiecutter.model_name|lower }}_form']
+        # So using the more ugly indexing by number here and in test_update_view
+        form = response.forms[0]
         form['name'] = new_name
         form.submit().follow()
 
@@ -53,7 +56,7 @@ class {{ cookiecutter.model_name }}Test(WebTest):
         instance = mommy.make({{ cookiecutter.model_name }})
         response = self.app.get(reverse('{{ cookiecutter.model_name|lower }}_update', kwargs={'pk': instance.pk, }))
 
-        form = response.forms['{{ cookiecutter.model_name|lower }}_form']
+        form = response.forms[0]
         new_name = 'Some new thing'
         form['name'] = new_name
         form.submit().follow()
